@@ -25,7 +25,7 @@ axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
     .then(response => {
         //console.log(response);
         console.log(response);
-            response.data.articles.forEach(item => {
+            response.data.articles.bootstrap.forEach(item => {
              const newArt = ArticleCardsComp(item);
             getCardsComponent.appendChild(newArt)
          })
@@ -41,12 +41,16 @@ function ArticleCardsComp (newArtCard) {
     
     const artHeadline = document.querySelector('div');
     artHeadline.classList.add('headline');
+    //artHeadline.textContent = 'testheadline';
     artHeadline.textContent = newArtCard.headline;
 
         const artAuthor = document.querySelector('div');
             const artImgCont = document.querySelector('div');
                 const artImgSource = document.querySelector('img');
             const artAuthNameSpan = document.querySelector('span');
+
+
+    return artCard;
 
 }
 
