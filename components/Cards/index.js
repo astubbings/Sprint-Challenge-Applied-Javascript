@@ -24,7 +24,7 @@ const getCardsComponent = document.querySelector('.cards-container')
 axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
     .then(response => {
         //console.log(response);
-        console.log(response);
+        //console.log(response.data.articles);
             response.data.articles.bootstrap.forEach(item => {
              const newArt = ArticleCardsComp(item);
             getCardsComponent.appendChild(newArt)
@@ -45,10 +45,23 @@ function ArticleCardsComp (newArtCard) {
     artHeadline.textContent = newArtCard.headline;
 
         const artAuthor = document.querySelector('div');
-            const artImgCont = document.querySelector('div');
-                const artImgSource = document.querySelector('img');
-            const artAuthNameSpan = document.querySelector('span');
+        artAuthor.classList.add('author')
+        //artAuthor.textContent = newArtCard.authorName;
 
+            const artImgCont = document.querySelector('div');
+            artImgCont.classList.add('img-container');
+                const artImgSource = document.querySelector('img');
+                artImgSource.src = newArtCard.authorPhoto;
+
+            const artAuthNameSpan = document.querySelector('span');
+            artAuthNameSpan.textContent = newArtCard.authorName;
+
+    artCard.appendChild(artHeadline);
+    artCard.appendChild(artAuthor);
+    artAuthor.appendChild(artImgCont);
+    artImgCont.appendChild(artImgSource);
+    artAuthor.appendChild(artAuthNameSpan);
+    
 
     return artCard;
 
